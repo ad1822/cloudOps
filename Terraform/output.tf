@@ -24,3 +24,11 @@ output "policy" {
     vpc_access = aws_iam_user_policy_attachment.vpc_access.policy_arn
   }
 }
+
+
+output "vpc" {
+  value = {
+    id   = aws_vpc.k8s-vpc.id
+    name = aws_vpc.k8s-vpc.tags
+  }
+}
