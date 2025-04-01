@@ -22,6 +22,8 @@ output "policy" {
     iam_access = aws_iam_user_policy_attachment.iam_full_access.policy_arn
     s3_access  = aws_iam_user_policy_attachment.s3_access.policy_arn
     vpc_access = aws_iam_user_policy_attachment.vpc_access.policy_arn
+    ec2_access = aws_iam_user_policy_attachment.ec2_access.policy_arn
+
   }
 }
 
@@ -50,4 +52,8 @@ output "public-subnets" {
     private-subnet-1-Name = aws_subnet.public-subnet-ap-south-1a.tags.Name
     private-subnet-2-Name = aws_subnet.public-subnet-ap-south-1b.tags.Name
   }
+}
+
+output "eip" {
+  value = aws_eip.nat.address
 }

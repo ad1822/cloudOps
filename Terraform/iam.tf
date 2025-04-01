@@ -26,9 +26,12 @@ resource "aws_iam_user_policy_attachment" "s3_access" {
 
 }
 
-
 resource "aws_iam_user_policy_attachment" "vpc_access" {
   user       = aws_iam_user.user.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
+}
 
+resource "aws_iam_user_policy_attachment" "ec2_access" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
