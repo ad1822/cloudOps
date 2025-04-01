@@ -32,3 +32,22 @@ output "vpc" {
     name = aws_vpc.k8s-vpc.tags
   }
 }
+
+output "private-subnets" {
+  value = {
+    private-subnet-1      = aws_subnet.private-subnet-ap-south-1a.id
+    private-subnet-2      = aws_subnet.private-subnet-ap-south-1b.id
+    private-subnet-1-Name = aws_subnet.private-subnet-ap-south-1a.tags.Name
+    private-subnet-2-Name = aws_subnet.private-subnet-ap-south-1b.tags.Name
+  }
+}
+
+
+output "public-subnets" {
+  value = {
+    private-subnet-1      = aws_subnet.public-subnet-ap-south-1a.id
+    private-subnet-2      = aws_subnet.public-subnet-ap-south-1b.id
+    private-subnet-1-Name = aws_subnet.public-subnet-ap-south-1a.tags.Name
+    private-subnet-2-Name = aws_subnet.public-subnet-ap-south-1b.tags.Name
+  }
+}
