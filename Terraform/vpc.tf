@@ -33,8 +33,6 @@ resource "aws_subnet" "private-subnet-ap-south-1b" {
   }
 }
 
-
-
 # Public Subnet 01
 
 resource "aws_subnet" "public-subnet-ap-south-1a" {

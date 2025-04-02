@@ -35,3 +35,33 @@ resource "aws_iam_user_policy_attachment" "ec2_access" {
   user       = aws_iam_user.user.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
+
+
+# resource "aws_iam_user_policy_attachment" "eks_access" {
+#   user       = aws_iam_user.user.name
+#   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+# }
+
+resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
+  role       = aws_iam_role.demo.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
+
+resource "aws_iam_role" "demo" {
+  name = "eks-cluster-demo"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "eks.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+  tags = {
+    Name = "eks-cluster-demo"
+  }
+}
