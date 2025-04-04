@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "k8s_cluster" {
   name     = "demo-eks"
-  role_arn = aws_iam_role.demo.arn
+  role_arn = aws_iam_role.eks_master_role.arn
   version  = "1.31"
 
   vpc_config {
@@ -14,5 +14,5 @@ resource "aws_eks_cluster" "k8s_cluster" {
     # endpoint_private_access = true
   }
 
-  depends_on = [aws_iam_role_policy_attachment.eks_cluster_policy]
+  depends_on = [aws_iam_user_policy.eks_cluster_inline_policy]
 }

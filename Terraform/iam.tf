@@ -37,31 +37,71 @@ resource "aws_iam_user_policy_attachment" "ec2_access" {
 }
 
 
-# resource "aws_iam_user_policy_attachment" "eks_access" {
-#   user       = aws_iam_user.user.name
-#   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-# }
+resource "aws_iam_user_policy" "eks_cluster_inline_policy" {
+  name = "eks-cluster-inline-policy"
+  user = aws_iam_user.user.name
 
-resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
-  role       = aws_iam_role.demo.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "eks:CreateCluster",
+          "eks:*",
+          "ssmmessages:*"
+        ],
+        "Resource" : [
+          "*",
+          "*"
+        ]
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "ssm:GetParameter",
+          "eks:DescribeCluster",
+          "eks:ListClusters",
+          "eks:DeleteCluster",
+          "cloudformation:CreateStack",
+          "eks:UpdateClusterConfig",
+          "eks:CreateNodegroup",
+          "eks:TagResource",
+          "eks:UntagResource",
+          "eks:AccessKubernetesApi",
+          "eks:ListNodegroups",
+          "eks:DescribeNodegroup",
+          "cloudformation:*"
+        ],
+        "Resource" : "*"
+      }
+    ]
+    }
+  )
+
 }
 
-resource "aws_iam_role" "demo" {
-  name = "eks-cluster-demo"
+
+resource "aws_iam_role" "eks_master_role" {
+  name = "eks-master-role"
+
   assume_role_policy = jsonencode({
-    Version = "2012-10-17"
+    Version = "2012-10-17",
     Statement = [
       {
-        Effect = "Allow"
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
         Principal = {
-          Service = "eks.amazonaws.com"
+          Service = "eks.amazonaws.com" # EKS service needs this
         }
-        Action = "sts:AssumeRole"
+      },
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          AWS = "arn:aws:iam::051826726751:user/dev" # Replace with your user ARN
+        }
       }
     ]
   })
-  tags = {
-    Name = "eks-cluster-demo"
-  }
 }

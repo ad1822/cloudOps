@@ -19,12 +19,12 @@ output "iam_password" {
 
 output "policy" {
   value = {
-    iam_access      = aws_iam_user_policy_attachment.iam_full_access.policy_arn
-    s3_access       = aws_iam_user_policy_attachment.s3_access.policy_arn
-    vpc_access      = aws_iam_user_policy_attachment.vpc_access.policy_arn
-    ec2_access      = aws_iam_user_policy_attachment.ec2_access.policy_arn
-    eks_access      = aws_iam_role.demo.name
-    eks_acesss_role = aws_iam_role_policy_attachment.eks_cluster_policy.policy_arn
+    iam_access = aws_iam_user_policy_attachment.iam_full_access.policy_arn
+    s3_access  = aws_iam_user_policy_attachment.s3_access.policy_arn
+    vpc_access = aws_iam_user_policy_attachment.vpc_access.policy_arn
+    ec2_access = aws_iam_user_policy_attachment.ec2_access.policy_arn
+    # eks_access      = aws_iam_role.demo.name
+    # eks_acesss_role = aws_iam_role_policy_attachment.eks_cluster_policy.policy_arn
   }
 }
 
