@@ -1,7 +1,9 @@
 
 # VPC
 resource "aws_vpc" "k8s-vpc" {
-  cidr_block = "192.168.0.0/16"
+  cidr_block           = "192.168.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
   tags = {
     Name = "k8s-vpc"
   }
@@ -56,7 +58,7 @@ resource "aws_subnet" "public-subnet-ap-south-1b" {
 
   tags = {
     Name                         = "public-ap-south-1b"
-    "kubernetes.io/role/elb"     = "1" #this instruct the kubernetes to create public load balancer in these subnets
+    "kubernetes.io/role/elb"     = "1"
     "kubernetes.io/cluster/demo" = "owned"
   }
 }
