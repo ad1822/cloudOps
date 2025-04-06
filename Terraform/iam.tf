@@ -36,6 +36,16 @@ resource "aws_iam_user_policy_attachment" "ec2_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
 
+resource "aws_iam_user_policy_attachment" "worker-node" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+}
+
+resource "aws_iam_user_policy_attachment" "eks-policy" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
+
 
 resource "aws_iam_user_policy" "eks_cluster_inline_policy" {
   name = "eks-cluster-inline-policy"

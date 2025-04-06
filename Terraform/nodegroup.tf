@@ -3,6 +3,7 @@ resource "aws_eks_node_group" "private-nodes" {
   node_group_name = "private-node"
   node_role_arn   = aws_iam_role.nodes.arn
 
+
   subnet_ids = [
     aws_subnet.private-subnet-ap-south-1a.id,
     aws_subnet.private-subnet-ap-south-1b.id
@@ -24,8 +25,9 @@ resource "aws_eks_node_group" "private-nodes" {
 
 
   tags = {
-    Name        = "private-nodegroup"
-    Environment = "dev"
+    Name                             = "private-nodegroup"
+    Environment                      = "dev"
+    "kubernetes.io/cluster/demo-eks" = "owned"
   }
 
 

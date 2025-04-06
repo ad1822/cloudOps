@@ -13,3 +13,5 @@ terraform plan -out=tfplan
 
 echo "Applying Terraform changes..."
 terraform apply tfplan
+
+rm -r tfplan

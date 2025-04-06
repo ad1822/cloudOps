@@ -18,7 +18,7 @@ resource "aws_subnet" "private-subnet-ap-south-1a" {
   tags = {
     Name                              = "private-ap-south-1a"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/demo"      = "owned"
+    "kubernetes.io/cluster/demo-eks"  = "owned"
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_subnet" "private-subnet-ap-south-1b" {
   tags = {
     Name                              = "private-ap-south-1b"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/demo"      = "owned"
+    "kubernetes.io/cluster/demo-eks"  = "owned"
   }
 }
 
@@ -44,9 +44,9 @@ resource "aws_subnet" "public-subnet-ap-south-1a" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name                         = "public-ap-south-1a"
-    "kubernetes.io/role/elb"     = "1" #this instruct the kubernetes to create public load balancer in these subnets
-    "kubernetes.io/cluster/demo" = "owned"
+    Name                             = "public-ap-south-1a"
+    "kubernetes.io/role/elb"         = "1"
+    "kubernetes.io/cluster/demo-eks" = "owned"
   }
 }
 
@@ -57,8 +57,8 @@ resource "aws_subnet" "public-subnet-ap-south-1b" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name                         = "public-ap-south-1b"
-    "kubernetes.io/role/elb"     = "1"
-    "kubernetes.io/cluster/demo" = "owned"
+    Name                             = "public-ap-south-1b"
+    "kubernetes.io/role/elb"         = "1"
+    "kubernetes.io/cluster/demo-eks" = "owned"
   }
 }
