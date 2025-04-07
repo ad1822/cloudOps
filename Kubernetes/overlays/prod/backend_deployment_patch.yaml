@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: gin
 spec:
-  replicas: 2
+  replicas: 1
   template:
     spec:
       serviceAccountName: gin-app-sa

@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: my-writer-binding
-  namespace: prod
+  # namespace: prod
 roleRef:
   kind: ClusterRole
   name: writer
