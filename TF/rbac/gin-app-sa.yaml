@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gin-app-sa
+  namespace: dev
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::051826726751:role/eks-backend-irsa-role
