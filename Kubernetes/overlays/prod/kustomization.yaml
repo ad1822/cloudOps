@@ -1,20 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: dev
+namespace: prod
 
 resources:
 - ../../base
 
 images:
-- name: ayushdumasia/go-bak
-  newName: ayushdumasia/go-bak
-  newTag: cc7d447
 - name: ayushdumasia/go-drop
   newName: ayushdumasia/go-drop
   newTag: "4810873"
-- name: ayushdumasia/image-app
-  newName: ayushdumasia/image-app
-  newTag: 852214b
 - name: ayushdumasia/pic-up
   newName: ayushdumasia/pic-up
   newTag: 66e6e5f

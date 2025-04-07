@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: gin
-        image: ayushdumasia/go-bak
+        image: ayushdumasia/go-drop
         imagePullPolicy: IfNotPresent
         resources:
           requests:

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: ayushdumasia/image-app
+        image: ayushdumasia/pic-up
         resources:
           requests:
             cpu: 100m
