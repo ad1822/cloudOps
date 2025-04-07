@@ -9,6 +9,9 @@ images:
 - name: ayushdumasia/go-bak
   newName: ayushdumasia/go-bak
   newTag: cc7d447
+- name: ayushdumasia/go-drop
+  newName: ayushdumasia/go-drop
+  newTag: "4810873"
 - name: ayushdumasia/image-app
   newName: ayushdumasia/image-app
   newTag: 852214b
@@ -35,13 +38,13 @@ patches:
     name: gin-service
 
 configMapGenerator:
-- name: gin-config
-  behavior: replace
+- behavior: replace
   literals:
   - AWS_REGION=ap-south-1
   - S3_BUCKET=prod-eks-gin-bucket-backend
   - RDS_DB=prod-eks-db.crskiw0kkxmi.ap-south-1.rds.amazonaws.com
   - DB_NAME=prodeksdb
+  name: gin-config
 
 generatorOptions:
   disableNameSuffixHash: true
