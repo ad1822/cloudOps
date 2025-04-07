@@ -1,1 +1,1 @@
-![](diagram_2.png.png)
+![](diagram_2.png)
