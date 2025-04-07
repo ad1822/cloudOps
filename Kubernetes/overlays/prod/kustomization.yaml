@@ -15,6 +15,9 @@ images:
 - name: ayushdumasia/image-app
   newName: ayushdumasia/image-app
   newTag: 852214b
+- name: ayushdumasia/pic-up
+  newName: ayushdumasia/pic-up
+  newTag: 66e6e5f
 
 patches:
 - path: ns_patch.yaml
