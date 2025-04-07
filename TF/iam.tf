@@ -45,3 +45,13 @@ resource "aws_iam_user_policy_attachment" "eks_access" {
   user       = aws_iam_user.user.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
+
+resource "aws_iam_user_policy_attachment" "rds_access" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+}
+
+resource "aws_iam_user_policy_attachment" "secret_manager_access" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
+}

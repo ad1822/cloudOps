@@ -99,3 +99,27 @@ output "eks_node_groups" {
 output "rbac" {
   value = aws_eks_access_entry.dev-1.kubernetes_groups
 }
+
+#! Bucket
+output "bucket" {
+  value = aws_s3_bucket.bucket.bucket_domain_name
+}
+
+#! Who Am I
+output "whoami" {
+  value = data.aws_caller_identity.current.arn
+}
+
+#! RDS
+output "db_host" {
+  value = aws_db_instance.gindb.address
+}
+
+output "db_user" {
+  value = aws_db_instance.gindb.username
+}
+
+output "db_user_password" {
+  value     = aws_db_instance.gindb.password
+  sensitive = true
+}
