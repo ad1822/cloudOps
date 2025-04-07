@@ -1,0 +1,15 @@
+# backend_deployment_patch.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: gin # Ensure unique label
+    # spec:
+    #   containers:
+    #   - name: gin
+    #     image: ayushdumasia/go-bak:c59c2a3

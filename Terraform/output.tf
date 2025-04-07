@@ -123,3 +123,9 @@ output "db_user_password" {
   value     = aws_db_instance.gindb.password
   sensitive = true
 }
+
+#! CloudFront
+
+output "cloudFront" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
+}

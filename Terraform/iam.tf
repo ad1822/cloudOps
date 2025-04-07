@@ -28,8 +28,13 @@ resource "aws_iam_user_policy_attachment" "iam_full_access" {
 resource "aws_iam_user_policy_attachment" "s3_access" {
   user       = aws_iam_user.user.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-
 }
+
+resource "aws_iam_user_policy_attachment" "cdn_access" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudFrontFullAccess"
+}
+
 
 resource "aws_iam_user_policy_attachment" "vpc_access" {
   user       = aws_iam_user.user.name

@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  template:
+    metadata:
+      labels:
+        app: app
+  replicas: 2
+  # template:
+  #   spec:
+  #     containers:
+  #     - name: app
+  #       image: ayushdumasia/image-app:b359061

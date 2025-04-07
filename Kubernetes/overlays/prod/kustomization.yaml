@@ -1,0 +1,47 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev
+
+resources:
+- ../../base
+
+images:
+- name: ayushdumasia/go-bak
+  newName: ayushdumasia/go-bak
+  newTag: cc7d447
+- name: ayushdumasia/image-app
+  newName: ayushdumasia/image-app
+  newTag: 852214b
+
+patches:
+- path: ns_patch.yaml
+  target:
+    kind: Namespace
+- path: frontend_deployment_patch.yaml
+  target:
+    kind: Deployment
+    name: app
+- path: frontend_service_patch.yaml
+  target:
+    kind: Service
+    name: app-service
+- path: backend_deployment_patch.yaml
+  target:
+    kind: Deployment
+    name: gin
+- path: backend_service_patch.yaml
+  target:
+    kind: Service
+    name: gin-service
+
+configMapGenerator:
+- name: gin-config
+  behavior: replace
+  literals:
+  - AWS_REGION=ap-south-1
+  - S3_BUCKET=prod-eks-gin-bucket-backend
+  - RDS_DB=prod-eks-db.crskiw0kkxmi.ap-south-1.rds.amazonaws.com
+  - DB_NAME=prodeksdb
+
+generatorOptions:
+  disableNameSuffixHash: true

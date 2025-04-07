@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-eks-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ad1822/cloudOps.git
+    targetRevision: main
+    path: Kubernetes/overlays/prod/
+    kustomize: {}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

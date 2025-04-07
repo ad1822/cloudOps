@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev
+
+resources:
+- ../../base
+
+images:
+- name: ayushdumasia/go-bak
+  newName: ayushdumasia/go-bak
+  newTag: cc7d447
+- name: ayushdumasia/image-app
+  newName: ayushdumasia/image-app
+  newTag: 852214b
+
+patches:
+- path: ns_patch.yaml
+  target:
+    kind: Namespace
+- path: frontend_deployment_patch.yaml
+  target:
+    kind: Deployment
+    name: app
+- path: frontend_service_patch.yaml
+  target:
+    kind: Service
+    name: app-service
+- path: backend_deployment_patch.yaml
+  target:
+    kind: Deployment
+    name: gin
+- path: backend_service_patch.yaml
+  target:
+    kind: Service
+    name: gin-service
