@@ -89,7 +89,7 @@ resource "aws_iam_role" "backend_irsa_role" {
         Action = "sts:AssumeRoleWithWebIdentity",
         Condition = {
           StringEquals = {
-            "${replace(aws_eks_cluster.eks.identity[0].oidc[0].issuer, "https://", "")}:sub" = "system:serviceaccount:dev:gin-app-sa",
+            "${replace(aws_eks_cluster.eks.identity[0].oidc[0].issuer, "https://", "")}:sub" = "system:serviceaccount:prod:gin-app-sa",
             "${replace(aws_eks_cluster.eks.identity[0].oidc[0].issuer, "https://", "")}:aud" = "sts.amazonaws.com"
           }
         }
@@ -122,7 +122,9 @@ resource "aws_iam_policy" "specific_bucket_access" {
           "arn:aws:s3:::prod-eks-gin-bucket-backend",
           "arn:aws:s3:::prod-eks-gin-bucket-backend./*"
         ]
+
       }
+
     ]
   })
 }
