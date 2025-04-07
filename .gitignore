@@ -4,3 +4,4 @@
 /TF/.terraform
 /TF/*.hcl
 /TF/*.backup
+/Terraform

@@ -1,7 +1,0 @@
--> For Listing policies attached to User
- aws iam list-attached-user-policies --user-name dev
-
-
-
--> List All policies
- aws iam list-policies --query 'Policies[*].[PolicyName, Arn]' --output json

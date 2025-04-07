@@ -1,4 +1,4 @@
 variable "iam_user" {
-  type = string
+  type    = string
   default = "dev-1"
 }

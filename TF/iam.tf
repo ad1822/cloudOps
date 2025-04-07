@@ -8,6 +8,12 @@ resource "aws_iam_access_key" "ak" {
 }
 
 
+resource "aws_eks_access_entry" "dev-1" {
+  cluster_name      = aws_eks_cluster.eks.name
+  principal_arn     = aws_iam_user.user.arn
+  kubernetes_groups = ["my-writer"]
+}
+
 resource "aws_iam_user_login_profile" "user_login" {
   user                    = aws_iam_user.user.name
   password_length         = 9
@@ -33,4 +39,9 @@ resource "aws_iam_user_policy_attachment" "vpc_access" {
 resource "aws_iam_user_policy_attachment" "ec2_access" {
   user       = aws_iam_user.user.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}
+
+resource "aws_iam_user_policy_attachment" "eks_access" {
+  user       = aws_iam_user.user.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
