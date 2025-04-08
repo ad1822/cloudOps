@@ -11,7 +11,7 @@ images:
   newTag: "4810873"
 - name: ayushdumasia/pic-up
   newName: ayushdumasia/pic-up
-  newTag: 194f9b0
+  newTag: 3d6ecf3
 
 patches:
 - path: ns_patch.yaml
