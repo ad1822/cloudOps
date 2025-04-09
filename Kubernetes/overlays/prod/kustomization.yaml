@@ -8,7 +8,7 @@ resources:
 images:
 - name: ayushdumasia/go-drop
   newName: ayushdumasia/go-drop
-  newTag: "4810873"
+  newTag: 8e9635c
 - name: ayushdumasia/pic-up
   newName: ayushdumasia/pic-up
   newTag: 3d6ecf3
