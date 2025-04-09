@@ -33,7 +33,7 @@ patches:
   target:
     kind: Service
     name: gin-service
-- path: frontend_ingress.yaml
+- path: frontend_ingress_patch.yaml
   target:
     kind: Ingress
 
