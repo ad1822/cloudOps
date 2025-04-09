@@ -33,6 +33,9 @@ patches:
   target:
     kind: Service
     name: gin-service
+- path: frontend_ingress.yaml
+  target:
+    kind: Ingress
 
 configMapGenerator:
 - behavior: replace
