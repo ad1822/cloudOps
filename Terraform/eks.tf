@@ -44,3 +44,14 @@ resource "aws_eks_cluster" "eks" {
 
   depends_on = [aws_iam_role_policy_attachment.eks]
 }
+
+
+resource "aws_iam_policy" "aws_eks" {
+  policy = file("./iam/EksClusterPolicy.json")
+  name   = "EKSCustomClusterPolicy"
+}
+
+resource "aws_iam_user_policy_attachment" "eks_inline_policy" {
+  user       = aws_iam_user.user.name
+  policy_arn = aws_iam_policy.aws_eks.arn
+}

@@ -1,6 +1,4 @@
 /Terraform/.terraform
 /Terraform/*.hcl
 /Terraform/*.backup
-/TF/.terraform
-/TF/*.hcl
-/TF/*.backup
+/Terraform/terraform.tfstate

@@ -111,6 +111,10 @@ output "whoami" {
 }
 
 #! RDS
+
+output "db_secret" {
+  value = aws_secretsmanager_secret.db_secret.name
+}
 output "db_host" {
   value = aws_db_instance.gindb.address
 }

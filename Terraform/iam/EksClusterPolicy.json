@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["eks:CreateCluster", "eks:*", "ssmmessages:*"],
+      "Resource": ["*", "*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameter",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "eks:DeleteCluster",
+        "cloudformation:CreateStack",
+        "eks:UpdateClusterConfig",
+        "eks:CreateNodegroup",
+        "eks:TagResource",
+        "eks:UntagResource",
+        "eks:AccessKubernetesApi",
+        "eks:ListNodegroups",
+        "eks:DescribeNodegroup",
+        "cloudformation:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

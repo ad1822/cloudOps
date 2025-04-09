@@ -1,7 +1,6 @@
 digraph G {
   rankdir = "RL";
   node [shape = rect, fontname = "sans-serif"];
-
   "data.aws_caller_identity.current" [label="data.aws_caller_identity.current"];
   "data.aws_eks_cluster.cluster" [label="data.aws_eks_cluster.cluster"];
   "data.aws_iam_policy_document.aws_lbc" [label="data.aws_iam_policy_document.aws_lbc"];
@@ -16,6 +15,7 @@ digraph G {
   "aws_eks_pod_identity_association.aws_lbc" [label="aws_eks_pod_identity_association.aws_lbc"];
   "aws_iam_access_key.ak" [label="aws_iam_access_key.ak"];
   "aws_iam_openid_connect_provider.oidc" [label="aws_iam_openid_connect_provider.oidc"];
+  "aws_iam_policy.aws_eks" [label="aws_iam_policy.aws_eks"];
   "aws_iam_policy.aws_lbc" [label="aws_iam_policy.aws_lbc"];
   "aws_iam_policy.specific_bucket_access" [label="aws_iam_policy.specific_bucket_access"];
   "aws_iam_role.aws_lbc" [label="aws_iam_role.aws_lbc"];
@@ -36,6 +36,7 @@ digraph G {
   "aws_iam_user_policy_attachment.cdn_access" [label="aws_iam_user_policy_attachment.cdn_access"];
   "aws_iam_user_policy_attachment.ec2_access" [label="aws_iam_user_policy_attachment.ec2_access"];
   "aws_iam_user_policy_attachment.eks_access" [label="aws_iam_user_policy_attachment.eks_access"];
+  "aws_iam_user_policy_attachment.eks_inline_policy" [label="aws_iam_user_policy_attachment.eks_inline_policy"];
   "aws_iam_user_policy_attachment.iam_full_access" [label="aws_iam_user_policy_attachment.iam_full_access"];
   "aws_iam_user_policy_attachment.rds_access" [label="aws_iam_user_policy_attachment.rds_access"];
   "aws_iam_user_policy_attachment.s3_access" [label="aws_iam_user_policy_attachment.s3_access"];
@@ -98,6 +99,8 @@ digraph G {
   "aws_iam_user_policy_attachment.cdn_access" -> "aws_iam_user.user";
   "aws_iam_user_policy_attachment.ec2_access" -> "aws_iam_user.user";
   "aws_iam_user_policy_attachment.eks_access" -> "aws_iam_user.user";
+  "aws_iam_user_policy_attachment.eks_inline_policy" -> "aws_iam_policy.aws_eks";
+  "aws_iam_user_policy_attachment.eks_inline_policy" -> "aws_iam_user.user";
   "aws_iam_user_policy_attachment.iam_full_access" -> "aws_iam_user.user";
   "aws_iam_user_policy_attachment.rds_access" -> "aws_iam_user.user";
   "aws_iam_user_policy_attachment.s3_access" -> "aws_iam_user.user";

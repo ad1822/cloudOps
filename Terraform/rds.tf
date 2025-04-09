@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "db_secret" {
-  name = "${local.env}-${local.eks_name}-gin-db-secret"
+  name = "${local.env}-${local.eks_name}-gin-db-secret-1"
 }
 
 resource "aws_secretsmanager_secret_version" "db_secret_version" {

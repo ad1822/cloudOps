@@ -7,6 +7,6 @@ roleRef:
   name: writer
   apiGroup: rbac.authorization.k8s.io
 subjects:
-- kind: ServiceAccount
-  name: gin-app-sa
-  namespace: prod
+- kind: Group
+  name: my-writer
+  apiGroup: rbac.authorization.k8s.io
